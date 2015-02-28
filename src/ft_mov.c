@@ -40,11 +40,6 @@ void	ft_right (t_ctx * ctx)
 	mvprintw(0, 0, "RIGHT");
 }
 
-void	ft_gravity (void)
-{
-
-}
-
 void	ft_mov (t_ctx * ctx, int key)
 {
 	void (*p[4])(t_ctx * ctx);
@@ -56,4 +51,5 @@ void	ft_mov (t_ctx * ctx, int key)
 	p[2] = ft_left;
 	p[3] = ft_right;
 	(*p[key - 258])(ctx);
+	ft_gravity(ctx);
 }

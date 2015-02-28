@@ -26,7 +26,7 @@ void	ft_init (t_ctx * ctx, int i)
 	ctx->mov[1] = 0;
 }
 
-int main(void)
+int		main(void)
 {
 	t_ctx	* ctx;
 

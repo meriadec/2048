@@ -16,7 +16,7 @@
 # include "libft.h"
 # include <ncurses.h>
 
-enum e_const
+enum	e_const
 {
 	WIN_VALUE = 2048
 };
@@ -43,11 +43,18 @@ void			ft_error (char * msg);
 /**
 ** ft_mov.c
 */
-void	ft_mov (t_ctx * ctx, int key);
+void			ft_mov (t_ctx * ctx, int key);
+
+/**
+** ft_game.c
+*/
+void			ft_gravity (t_ctx * ctx);
+void			ft_spawn (t_ctx * ctx);
+
 
 /**
 ** ft_utils.c
 */
-int		ft_ispowertwo (unsigned int x);
+int				ft_ispowertwo (unsigned int x);
 
 #endif
