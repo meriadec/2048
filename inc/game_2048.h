@@ -50,7 +50,7 @@ void			ft_mov (t_ctx * ctx, int key);
 ** ft_game.c
 */
 void			ft_gravity (t_ctx * ctx);
-void			ft_spawn (t_ctx * ctx);
+void			ft_spawn (t_ctx * ctx, int i, int av);
 
 
 /**
