@@ -14,7 +14,24 @@
 
 void	ft_spawn (t_ctx * ctx)
 {
-	(void)ctx;
+	int i;
+	int av;
+	int * tmp;
+
+	i = 0;
+	av = 0;
+	tmp = (int *) malloc((ctx->size * ctx->size) * sizeof(*ctx->map));
+	while (i < (ctx->size * ctx->size))
+	{
+		if (ctx->map[i] == 0)
+		{
+			tmp[av] = i;
+			++av;
+		}
+		++i;
+	}
+	int random = rand() % av;
+	ctx->map[tmp[random]] = 2;
 }
 
 void	ft_gravity (t_ctx * ctx)

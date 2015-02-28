@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <ncurses.h>
+# include <stdlib.h>
 
 enum	e_const
 {
