@@ -135,7 +135,11 @@ int		ft_mov(t_ctx *ctx, int key)
 	if (!(key >= 258 && key <= 261))
 		return (1);
 	if (!ft_check_lock(ctx, 0, 0))
+	{
+		ft_finish(ctx);
+		ft_putendl("Vous avez ete bloque, grosse merde.");
 		return (0);
+	}
 	p[0] = ft_down;
 	p[1] = ft_up;
 	p[2] = ft_left;
