@@ -44,10 +44,29 @@ static int		st_init(t_ctx *ctx, int i)
 	return (0);
 }
 
+static int		st_has_enough_size(t_ctx *ctx)
+{
+	return (COLS / ctx->size >= MIN_CELL_W && LINES / ctx->size >= MIN_CELL_H);
+}
+
+static void		st_loop(t_ctx *ctx)
+{
+	int		key;
+
+	while ((key = getch()) != 27)
+	{
+		if (key == KEY_RESIZE)
+			ft_draw(ctx);
+		if (!st_has_enough_size(ctx))
+			return;
+		ft_mov(ctx, key);
+		ft_draw(ctx);
+	}
+}
+
 int				main(int ac, char **av)
 {
 	t_ctx	*ctx;
-	int		key;
 
 	if (!(ctx = (t_ctx *)malloc(sizeof(t_ctx))))
 		return (ft_error("Can't malloc 'ctx'"));
@@ -56,16 +75,7 @@ int				main(int ac, char **av)
 	if (ac == 3 && ft_strequ(av[1], "--mock"))
 		ft_mock(ctx, av[2]);
 	ft_draw(ctx);
-	while ((key = getch()) != 27)
-	{
-		if (key == KEY_RESIZE)
-		{
-			mvprintw(0, 0, "Col %d Line %d", COLS, LINES);
-			ft_draw(ctx);
-		}
-		ft_mov(ctx, key);
-		ft_draw(ctx);
-	}
+	st_loop(ctx);
 	endwin();
 	free(ctx);
 	return (0);

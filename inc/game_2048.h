@@ -17,6 +17,12 @@
 # include <ncurses.h>
 # include <stdlib.h>
 
+/**
+** Defines
+*/
+# define MIN_CELL_W		15
+# define MIN_CELL_H		5
+
 enum	e_const
 {
 	WIN_VALUE = 2048
