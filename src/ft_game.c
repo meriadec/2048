@@ -12,11 +12,11 @@
 
 #include "game_2048.h"
 
-void	ft_spawn (t_ctx * ctx, int i, int av)
+void	ft_spawn(t_ctx *ctx, int i, int av)
 {
-	int * tmp;
+	int *tmp;
 
-	tmp = (int *) malloc((ctx->size * ctx->size) * sizeof(*ctx->map));
+	tmp = (int *)malloc((ctx->size * ctx->size) * sizeof(*ctx->map));
 	while (i < (ctx->size * ctx->size))
 	{
 		if (ctx->map[i] == 0)
@@ -26,7 +26,8 @@ void	ft_spawn (t_ctx * ctx, int i, int av)
 		}
 		++i;
 	}
-	if (av == 0) {
+	if (av == 0)
+	{
 		mvprintw(0, 0, "YOU LOOSE BITCH");
 		return ;
 	}
@@ -34,7 +35,7 @@ void	ft_spawn (t_ctx * ctx, int i, int av)
 	ctx->map[tmp[random]] = 2;
 }
 
-void	ft_gravity (t_ctx * ctx)
+void	ft_gravity(t_ctx *ctx)
 {
 	(void)ctx;
 }
