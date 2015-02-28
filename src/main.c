@@ -16,11 +16,17 @@
 static void		st_init_colors(void)
 {
 	start_color();
-	init_pair(1, COLOR_RED, COLOR_BLACK);
-	init_pair(2, COLOR_GREEN, COLOR_GREEN);
-	init_pair(3, COLOR_BLUE, COLOR_BLACK);
-	init_pair(4, COLOR_WHITE, COLOR_BLUE);
-	init_pair(5, COLOR_RED, COLOR_BLACK);
+	init_pair(2, COLOR_WHITE, COLOR_WHITE);
+	init_pair(4, COLOR_WHITE, COLOR_YELLOW);
+	init_pair(8, COLOR_WHITE, COLOR_GREEN);
+	init_pair(16, COLOR_WHITE, COLOR_CYAN);
+	init_pair(32, COLOR_WHITE, COLOR_BLUE);
+	init_pair(64, COLOR_WHITE, COLOR_MAGENTA);
+	init_pair(128, COLOR_WHITE, COLOR_RED);
+	init_pair(256, COLOR_WHITE, COLOR_WHITE);
+	init_pair(512, COLOR_WHITE, COLOR_WHITE);
+	init_pair(1024, COLOR_WHITE, COLOR_WHITE);
+	init_pair(2048, COLOR_WHITE, COLOR_WHITE);
 }
 
 static int		st_init(t_ctx *ctx, int i)

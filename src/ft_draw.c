@@ -22,14 +22,14 @@ static void			st_draw_tile(t_ctx *ctx, int n, int ch, int cw)
 		y = (n / ctx->size) * ch + 2;
 		while (y < (n / ctx->size) * ch + ch - 1)
 		{
-			wattrset(stdscr, COLOR_PAIR(4));
+			wattrset(stdscr, COLOR_PAIR(ctx->map[n]));
 			x = (n % ctx->size) * cw + 3;
 			while (x < (n % ctx->size) * cw + cw - 3)
 			{
 				mvprintw(y, x, " ");
 				x++;
 			}
-			wattroff(stdscr, COLOR_PAIR(4));
+			wattroff(stdscr, COLOR_PAIR(ctx->map[n]));
 			y++;
 		}
 		mvprintw(
