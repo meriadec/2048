@@ -43,8 +43,7 @@ void			ft_draw (t_ctx * ctx);
 /**
 ** errors
 */
-void			ft_exit (int code);
-void			ft_error (char * msg);
+int				ft_error (char * msg);
 
 /**
 ** ft_mov.c
@@ -62,5 +61,10 @@ void			ft_spawn (t_ctx * ctx, int i, int av);
 ** ft_utils.c
 */
 int				ft_ispowertwo (unsigned int x);
+
+/**
+** ft_mock
+*/
+int				ft_mock(t_ctx *ctx, char *filename);
 
 #endif

@@ -10,16 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "game_2048.h"
 
-void			ft_error(char *msg)
+int				ft_error(char *msg)
 {
 	ft_putstr_fd(msg, 2);
-	ft_exit(1);
-}
-
-void			ft_exit(int code)
-{
-	exit(code);
+	return (1);
 }

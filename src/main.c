@@ -13,13 +13,12 @@
 #include "game_2048.h"
 #include <time.h>
 
-void	ft_init (t_ctx * ctx, int i)
+static int		st_init(t_ctx *ctx, int i)
 {
-	if (!initscr()) {
-		ft_error("Init failed");
-	}
+	if (!initscr())
+		return (ft_error("Can't init screen"));
 	ctx->size = 4;
-	ctx->map = (int *) malloc((ctx->size * ctx->size) * sizeof(*ctx->map));
+	ctx->map = (int *)malloc((ctx->size * ctx->size) * sizeof(*ctx->map));
 	while (i < ctx->size * ctx->size)
 	{
 		ctx->map[i] = 0;
@@ -30,21 +29,27 @@ void	ft_init (t_ctx * ctx, int i)
 	srand(time(NULL));
 	keypad(stdscr, TRUE);
 	curs_set(0);
+	return (0);
 }
 
-int		main(void)
+int				main(int ac, char **av)
 {
-	t_ctx	* ctx;
+	t_ctx	*ctx;
 	int		key;
 
-	if (!(ctx = (t_ctx *) malloc(sizeof(t_ctx))))
-		ft_error("Can't malloc 'ctx'");
-	ft_init(ctx, 0);
+	if (!(ctx = (t_ctx *)malloc(sizeof(t_ctx))))
+		return (ft_error("Can't malloc 'ctx'"));
+	if (-1 == st_init(ctx, 0))
+		return (ft_error("Init failed"));
+	if (ac == 3 && ft_strequ(av[1], "--mock"))
+		ft_mock(ctx, av[2]);
 	ft_draw(ctx);
-	while ((key = getch()) != 27) {
-		if (key == KEY_RESIZE) {
+	while ((key = getch()) != 27)
+	{
+		if (key == KEY_RESIZE)
+		{
 			mvprintw(0, 0, "Col %d Line %d", COLS, LINES);
-			refresh();
+			ft_draw(ctx);
 		}
 		ft_mov(ctx, key);
 		ft_draw(ctx);
