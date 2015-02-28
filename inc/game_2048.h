@@ -84,4 +84,9 @@ int				ft_mock(t_ctx *ctx, char *filename);
 */
 void			ft_finish(t_ctx *ctx);
 
+/**
+** ft_loop
+*/
+void			ft_loop(t_ctx *ctx);
+
 #endif

@@ -51,37 +51,6 @@ static int		st_init(t_ctx *ctx, int i)
 	return (0);
 }
 
-static int		st_has_enough_size(t_ctx *ctx)
-{
-	int	ret = (COLS/ctx->size >= MIN_CELL_W && LINES/ctx->size >= MIN_CELL_H);
-	if (!ret)
-	{
-		ft_finish(ctx);
-		ft_putendl("\n\nYour window is too small (nice try..)\n\n");
-	}
-	return ret;
-}
-
-static void		st_loop(t_ctx *ctx)
-{
-	int		key;
-
-	ft_spawn(ctx, 0, 0);
-	ft_draw(ctx);
-	if (!st_has_enough_size(ctx))
-		return ;
-	while ((key = getch()) != 27)
-	{
-		if (key == KEY_RESIZE)
-			ft_draw(ctx);
-		if (!st_has_enough_size(ctx))
-			return ;
-		if (!ft_mov(ctx, key))
-			return ;
-		ft_draw(ctx);
-	}
-}
-
 int				main(int ac, char **av)
 {
 	t_ctx	*ctx;
@@ -92,6 +61,7 @@ int				main(int ac, char **av)
 		return (ft_error("Init failed"));
 	if (ac == 3 && ft_strequ(av[1], "--mock"))
 		ft_mock(ctx, av[2]);
-	st_loop(ctx);
+	//ft_menu(ctx);
+	ft_loop(ctx);
 	return (0);
 }

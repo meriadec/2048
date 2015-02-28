@@ -24,6 +24,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_mock.c \
 					  $(DIR_SRC)/ft_utils.c \
 					  $(DIR_SRC)/ft_finish.c \
+					  $(DIR_SRC)/ft_loop.c \
 
 # ---------------------------------------------------------------------------- #
 
