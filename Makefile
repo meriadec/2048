@@ -14,7 +14,7 @@ NAME				= game_2048
 CC					= clang
 FLAG				= -Wall -Werror -Wextra -pedantic
 INCS				= -I inc -I ./inc -I libft/inc
-LIBS				= -L libft -lft -L /usr/lib -lncurses -ltermcap
+LIBS				= -L libft -lft -L /usr/lib -lncurses
 
 SRC					= $(DIR_SRC)/main.c \
 
