@@ -22,6 +22,8 @@
 */
 # define MIN_CELL_W		15
 # define MIN_CELL_H		5
+# define MAP			ctx->map
+# define SIZ			ctx->size
 
 enum	e_const
 {

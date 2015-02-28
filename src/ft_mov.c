@@ -14,26 +14,26 @@
 
 void	ft_up(t_ctx *ctx, int x, int y, int tmp)
 {
-	while (x < ctx->size)
+	while (x < SIZ)
 	{
 		y = 1;
-		while (y < ctx->size)
+		while (y < SIZ)
 		{
 			tmp = y - 1;
-			while (ctx->map[tmp * ctx->size + x] == 0 && tmp > 0)
+			while (MAP[tmp * SIZ + x] == 0 && tmp > 0)
 				--tmp;
-			if (ctx->map[tmp * ctx->size + x] == 0)
+			if (MAP[tmp * SIZ + x] == 0)
 			{
-				ctx->map[tmp * ctx->size + x] = ctx->map[y * ctx->size + x];
-				ctx->map[y * ctx->size + x] = 0;
+				MAP[tmp * SIZ + x] = MAP[y * SIZ + x];
+				MAP[y * SIZ + x] = 0;
 			}
-			else if ((ctx->map[tmp * ctx->size + x] == ctx->map[y * ctx->size + x]) || (tmp != y - 1))
+			else if ((MAP[tmp * SIZ + x] == MAP[y * SIZ + x]) || (tmp != y - 1))
 			{
-				if (ctx->map[tmp * ctx->size + x] == ctx->map[y * ctx->size + x])
-					ctx->map[tmp * ctx->size + x] = ctx->map[y * ctx->size + x] + ctx->map[y * ctx->size + x];
+				if (MAP[tmp * SIZ + x] == MAP[y * SIZ + x])
+					MAP[tmp * SIZ + x] = MAP[y * SIZ + x] + MAP[y * SIZ + x];
 				else if (tmp != y - 1)
-					ctx->map[(tmp + 1) * ctx->size + x] = ctx->map[y * ctx->size + x];
-				ctx->map[y * ctx->size + x] = 0;
+					MAP[(tmp + 1) * SIZ + x] = MAP[y * SIZ + x];
+				MAP[y * SIZ + x] = 0;
 			}
 			++y;
 		}
@@ -43,26 +43,26 @@ void	ft_up(t_ctx *ctx, int x, int y, int tmp)
 
 void	ft_down(t_ctx *ctx, int x, int y, int tmp)
 {
-	while (x < ctx->size)
+	while (x < SIZ)
 	{
-		y = ctx->size - 2;
+		y = SIZ - 2;
 		while (y >= 0)
 		{
 			tmp = y + 1;
-			while (ctx->map[tmp * ctx->size + x] == 0 && tmp < ctx->size - 1)
+			while (MAP[tmp * SIZ + x] == 0 && tmp < SIZ - 1)
 				++tmp;
-			if (ctx->map[tmp * ctx->size + x] == 0)
+			if (MAP[tmp * SIZ + x] == 0)
 			{
-				ctx->map[tmp * ctx->size + x] = ctx->map[y * ctx->size + x];
-				ctx->map[y * ctx->size + x] = 0;
+				MAP[tmp * SIZ + x] = MAP[y * SIZ + x];
+				MAP[y * SIZ + x] = 0;
 			}
-			else if ((ctx->map[tmp * ctx->size + x] == ctx->map[y * ctx->size + x]) || (tmp != y + 1))
+			else if ((MAP[tmp * SIZ + x] == MAP[y * SIZ + x]) || (tmp != y + 1))
 			{
-				if (ctx->map[tmp * ctx->size + x] == ctx->map[y * ctx->size + x])
-					ctx->map[tmp * ctx->size + x] = ctx->map[y * ctx->size + x] + ctx->map[y * ctx->size + x];
+				if (MAP[tmp * SIZ + x] == MAP[y * SIZ + x])
+					MAP[tmp * SIZ + x] = MAP[y * SIZ + x] + MAP[y * SIZ + x];
 				else if (tmp != y + 1)
-					ctx->map[(tmp - 1) * ctx->size + x] = ctx->map[y * ctx->size + x];
-				ctx->map[y * ctx->size + x] = 0;
+					MAP[(tmp - 1) * SIZ + x] = MAP[y * SIZ + x];
+				MAP[y * SIZ + x] = 0;
 			}
 			--y;
 		}
@@ -72,26 +72,26 @@ void	ft_down(t_ctx *ctx, int x, int y, int tmp)
 
 void	ft_left(t_ctx *ctx, int x, int y, int tmp)
 {
-	while (y < ctx->size)
+	while (y < SIZ)
 	{
 		x = 1;
-		while (x < ctx->size)
+		while (x < SIZ)
 		{
 			tmp = x - 1;
-			while (ctx->map[y * ctx->size + tmp] == 0 && tmp > 0)
+			while (MAP[y * SIZ + tmp] == 0 && tmp > 0)
 				--tmp;
-			if (ctx->map[y * ctx->size + tmp] == 0)
+			if (MAP[y * SIZ + tmp] == 0)
 			{
-				ctx->map[y * ctx->size + tmp] = ctx->map[y * ctx->size + x];
-				ctx->map[y * ctx->size + x] = 0;
+				MAP[y * SIZ + tmp] = MAP[y * SIZ + x];
+				MAP[y * SIZ + x] = 0;
 			}
-			else if ((ctx->map[y * ctx->size + tmp] == ctx->map[y * ctx->size + x]) || (tmp != x - 1))
+			else if ((MAP[y * SIZ + tmp] == MAP[y * SIZ + x]) || (tmp != x - 1))
 			{
-				if (ctx->map[y * ctx->size + tmp] == ctx->map[y * ctx->size + x])
-					ctx->map[y * ctx->size + tmp] = ctx->map[y * ctx->size + x] + ctx->map[y * ctx->size + x];
+				if (MAP[y * SIZ + tmp] == MAP[y * SIZ + x])
+					MAP[y * SIZ + tmp] = MAP[y * SIZ + x] + MAP[y * SIZ + x];
 				else if (tmp != x - 1)
-					ctx->map[y * ctx->size + tmp + 1] = ctx->map[y * ctx->size + x];
-				ctx->map[y * ctx->size + x] = 0;
+					MAP[y * SIZ + tmp + 1] = MAP[y * SIZ + x];
+				MAP[y * SIZ + x] = 0;
 			}
 			++x;
 		}
@@ -101,26 +101,26 @@ void	ft_left(t_ctx *ctx, int x, int y, int tmp)
 
 void	ft_right(t_ctx *ctx, int x, int y, int tmp)
 {
-	while (y < ctx->size)
+	while (y < SIZ)
 	{
-		x = ctx->size - 2;
+		x = SIZ - 2;
 		while (x >= 0)
 		{
 			tmp = x + 1;
-			while (ctx->map[y * ctx->size + tmp] == 0 && tmp < ctx->size - 1)
+			while (MAP[y * SIZ + tmp] == 0 && tmp < SIZ - 1)
 				++tmp;
-			if (ctx->map[y * ctx->size + tmp] == 0)
+			if (MAP[y * SIZ + tmp] == 0)
 			{
-				ctx->map[y * ctx->size + tmp] = ctx->map[y * ctx->size + x];
-				ctx->map[y * ctx->size + x] = 0;
+				MAP[y * SIZ + tmp] = MAP[y * SIZ + x];
+				MAP[y * SIZ + x] = 0;
 			}
-			else if ((ctx->map[y * ctx->size + tmp] == ctx->map[y * ctx->size + x]) || (tmp != x + 1))
+			else if ((MAP[y * SIZ + tmp] == MAP[y * SIZ + x]) || (tmp != x + 1))
 			{
-				if (ctx->map[y * ctx->size + tmp] == ctx->map[y * ctx->size + x])
-					ctx->map[y * ctx->size + tmp] = ctx->map[y * ctx->size + x] + ctx->map[y * ctx->size + x];
+				if (MAP[y * SIZ + tmp] == MAP[y * SIZ + x])
+					MAP[y * SIZ + tmp] = MAP[y * SIZ + x] + MAP[y * SIZ + x];
 				else if (tmp != x + 1)
-					ctx->map[y * ctx->size + tmp - 1] = ctx->map[y * ctx->size + x];
-				ctx->map[y * ctx->size + x] = 0;
+					MAP[y * SIZ + tmp - 1] = MAP[y * SIZ + x];
+				MAP[y * SIZ + x] = 0;
 			}
 			--x;
 		}
