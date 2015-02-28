@@ -64,7 +64,7 @@ static void		st_loop(t_ctx *ctx)
 		if (key == KEY_RESIZE)
 			ft_draw(ctx);
 		if (!st_has_enough_size(ctx))
-			return;
+			return ;
 		ft_mov(ctx, key);
 		ft_draw(ctx);
 	}

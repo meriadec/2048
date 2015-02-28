@@ -12,7 +12,7 @@
 
 #include "game_2048.h"
 
-int		ft_ispowertwo (unsigned int x)
+int		ft_ispowertwo(unsigned int x)
 {
 	while (((x % 2) == 0) && x > 1)
 	{
@@ -21,7 +21,7 @@ int		ft_ispowertwo (unsigned int x)
 	return (x == 1);
 }
 
-int		ft_getpowexposant (int x)
+int		ft_getpowexposant(int x)
 {
 	int	i;
 
