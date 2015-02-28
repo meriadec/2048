@@ -60,6 +60,10 @@ static void		st_loop(t_ctx *ctx)
 {
 	int		key;
 
+	if (!st_has_enough_size(ctx))
+		return ;
+	ft_spawn(ctx, 0, 0);
+	ft_draw(ctx);
 	while ((key = getch()) != 27)
 	{
 		if (key == KEY_RESIZE)
@@ -82,8 +86,6 @@ int				main(int ac, char **av)
 		return (ft_error("Init failed"));
 	if (ac == 3 && ft_strequ(av[1], "--mock"))
 		ft_mock(ctx, av[2]);
-	ft_spawn(ctx, 0, 0);
-	ft_draw(ctx);
 	st_loop(ctx);
 	endwin();
 	free(ctx);
