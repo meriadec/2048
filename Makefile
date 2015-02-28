@@ -48,10 +48,10 @@ $(NAME): $(DIR_OBJ) $(OBJ)
 
 $(DIR_OBJ) :
 	@/bin/mkdir $(DIR_OBJ); \
-	for DIR in $(DIR_LIST); \
-	do \
+		for DIR in $(DIR_LIST); \
+		do \
 		/bin/mkdir $(DIR_OBJ)/$$DIR; \
-	done
+		done
 
 clean:
 	@$(MAKE) -C libft $@
