@@ -6,12 +6,25 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 10:21:00 by bgronon           #+#    #+#             */
-/*   Updated: 2015/02/28 12:27:09 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/02/28 12:39:11 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 #include <stdlib.h>
+
+void	ft_init (t_ctx * ctx, int i)
+{
+	ctx->size = 4;
+	ctx->map = (int *) malloc(ctx->size * sizeof(ctx->map));
+	while (i < ctx->size * ctx->size)
+	{
+		ctx->map[i] = 0;
+		++i;
+	}
+	ctx->mov[0] = 0;
+	ctx->mov[1] = 0;
+}
 
 int main(void)
 {
@@ -20,24 +33,23 @@ int main(void)
 	if (!(ctx = (t_ctx *) malloc(sizeof(t_ctx))))
 		ft_error("Can't malloc 'ctx'");
 
+	ft_init(ctx, 0);
+
 	if (!initscr()) {
-		ft_putendl("Init failed");
+		ft_error("Init failed");
 	}
 
 	keypad(stdscr, TRUE);
 
 	int key;
 	while ((key = getch()) != 27) {
+		clear();
 		if (key == KEY_RESIZE) {
-			clear();
 			mvprintw(0, 0, "Col %d Line %d", COLS, LINES);
 			refresh();
 		}
-		if (key == KEY_UP) {
-			mvprintw(0, 0, "PUTE");
-			refresh();
-		}
-
+		ft_mov(ctx, key);
+		refresh();
 	}
 
 	endwin();
