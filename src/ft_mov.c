@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:31:32 by bgronon           #+#    #+#             */
-/*   Updated: 2015/02/28 12:37:55 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/02/28 14:55:21 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ void	ft_mov(t_ctx *ctx, int key)
 	p[2] = ft_left;
 	p[3] = ft_right;
 	(*p[key - 258])(ctx);
-	ft_gravity(ctx);
+	ft_gravit(ctx);
 }
