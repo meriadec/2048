@@ -11,9 +11,15 @@
 /* ************************************************************************** */
 
 #include "game_2048.h"
+#include <stdlib.h>
 
 int main(void)
 {
+	t_ctx	* ctx;
+
+	if (!(ctx = (t_ctx *) malloc(sizeof(t_ctx))))
+		ft_error("Can't malloc 'ctx'");
+
 	if (!initscr()) {
 		ft_putendl("Init failed");
 	}
@@ -35,6 +41,7 @@ int main(void)
 	}
 
 	endwin();
+	free(ctx);
 
 	return (0);
 }
