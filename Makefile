@@ -20,6 +20,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/error.c \
 					  $(DIR_SRC)/ft_mov.c \
 					  $(DIR_SRC)/ft_game.c \
+					  $(DIR_SRC)/ft_draw.c \
 
 # ---------------------------------------------------------------------------- #
 

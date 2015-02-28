@@ -36,6 +36,11 @@ typedef struct	s_ctx
 */
 
 /**
+** ft_draw
+*/
+void			ft_draw (t_ctx * ctx);
+
+/**
 ** errors
 */
 void			ft_exit (int code);

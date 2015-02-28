@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 10:21:00 by bgronon           #+#    #+#             */
-/*   Updated: 2015/02/28 12:39:11 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/02/28 13:25:34 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_init (t_ctx * ctx, int i)
 	ctx->mov[1] = 0;
 	srand(time(NULL));
 	keypad(stdscr, TRUE);
+	curs_set(0);
 }
 
 int		main(void)
@@ -38,23 +39,17 @@ int		main(void)
 
 	if (!(ctx = (t_ctx *) malloc(sizeof(t_ctx))))
 		ft_error("Can't malloc 'ctx'");
-
 	ft_init(ctx, 0);
-
+	ft_draw(ctx);
 	while ((key = getch()) != 27) {
-		clear();
 		if (key == KEY_RESIZE) {
 			mvprintw(0, 0, "Col %d Line %d", COLS, LINES);
 			refresh();
 		}
 		ft_mov(ctx, key);
-		refresh();
+		ft_draw(ctx);
 	}
-
 	endwin();
 	free(ctx);
-
-	//printf(" pute %d %d %d %d\n", KEY_DOWN, KEY_UP, KEY_LEFT, KEY_RIGHT);
-
 	return (0);
 }
