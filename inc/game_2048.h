@@ -31,19 +31,23 @@ typedef struct	s_ctx
 }				t_ctx;
 
 /**
- * Prototypes
- */
+** Prototypes
+*/
+
+/**
+** errors
+*/
 void			ft_exit (int code);
 void			ft_error (char * msg);
 
 /**
- * ft_mov.c
- */
+** ft_mov.c
+*/
 void	ft_mov (t_ctx * ctx, int key);
 
 /**
- * ft_utils.c
- */
+** ft_utils.c
+*/
 int		ft_ispowertwo (unsigned int x);
 
 #endif
