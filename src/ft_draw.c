@@ -33,7 +33,7 @@ static void			st_draw_tile(t_ctx *ctx, int n, int ch, int cw)
 			y++;
 		}
 		mvprintw(
-			(n / ctx->size) * ch + 2 + (ch - 2) / 2,
+			(n / ctx->size) * ch + 2 + (ch - 3) / 2,
 			(n % ctx->size) * cw + 3 + (cw - 6) / 2
 			- (ft_strlen(ft_itoa(ctx->map[n])) + 2) / 2,
 			" %d ",
