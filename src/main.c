@@ -16,7 +16,7 @@
 void	ft_init (t_ctx * ctx, int i)
 {
 	ctx->size = 4;
-	ctx->map = (int *) malloc(ctx->size * sizeof(ctx->map));
+	ctx->map = (int *) malloc((ctx->size * ctx->size) * sizeof(*ctx->map));
 	while (i < ctx->size * ctx->size)
 	{
 		ctx->map[i] = 0;
