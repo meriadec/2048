@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 10:21:00 by bgronon           #+#    #+#             */
-/*   Updated: 2015/02/28 12:24:58 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/02/28 18:30:15 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ int		ft_getpowexposant(int x)
 		i++;
 	}
 	return (i);
+}
+
+void	ft_reset_tile (t_ctx *ctx, int n)
+{
+	MAP[n] = 0;
+	ctx->moved = 1;
 }

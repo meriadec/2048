@@ -23,18 +23,17 @@ void	ft_up(t_ctx *ctx, int x, int y, int tmp)
 			while (MAP[tmp * SIZ + x] == 0 && tmp > 0)
 				--tmp;
 			if (MAP[tmp * SIZ + x] == 0)
-			{
 				MAP[tmp * SIZ + x] = MAP[y * SIZ + x];
-				MAP[y * SIZ + x] = 0;
-			}
 			else if ((MAP[tmp * SIZ + x] == MAP[y * SIZ + x]) || (tmp != y - 1))
 			{
 				if (MAP[tmp * SIZ + x] == MAP[y * SIZ + x])
 					MAP[tmp * SIZ + x] = MAP[y * SIZ + x] + MAP[y * SIZ + x];
 				else if (tmp != y - 1)
 					MAP[(tmp + 1) * SIZ + x] = MAP[y * SIZ + x];
-				MAP[y * SIZ + x] = 0;
 			}
+			if ((MAP[tmp * SIZ + x] == 0)
+				|| (MAP[tmp * SIZ + x] == MAP[y * SIZ + x]) || (tmp != y - 1))
+				ft_reset_tile(ctx, y * SIZ + x);
 			++y;
 		}
 		++x;
@@ -52,18 +51,17 @@ void	ft_down(t_ctx *ctx, int x, int y, int tmp)
 			while (MAP[tmp * SIZ + x] == 0 && tmp < SIZ - 1)
 				++tmp;
 			if (MAP[tmp * SIZ + x] == 0)
-			{
 				MAP[tmp * SIZ + x] = MAP[y * SIZ + x];
-				MAP[y * SIZ + x] = 0;
-			}
 			else if ((MAP[tmp * SIZ + x] == MAP[y * SIZ + x]) || (tmp != y + 1))
 			{
 				if (MAP[tmp * SIZ + x] == MAP[y * SIZ + x])
 					MAP[tmp * SIZ + x] = MAP[y * SIZ + x] + MAP[y * SIZ + x];
 				else if (tmp != y + 1)
 					MAP[(tmp - 1) * SIZ + x] = MAP[y * SIZ + x];
-				MAP[y * SIZ + x] = 0;
 			}
+			if ((MAP[tmp * SIZ + x] == 0)
+				|| (MAP[tmp * SIZ + x] == MAP[y * SIZ + x]) || (tmp != y + 1))
+				ft_reset_tile(ctx, y * SIZ + x);
 			--y;
 		}
 		++x;
@@ -81,18 +79,17 @@ void	ft_left(t_ctx *ctx, int x, int y, int tmp)
 			while (MAP[y * SIZ + tmp] == 0 && tmp > 0)
 				--tmp;
 			if (MAP[y * SIZ + tmp] == 0)
-			{
 				MAP[y * SIZ + tmp] = MAP[y * SIZ + x];
-				MAP[y * SIZ + x] = 0;
-			}
 			else if ((MAP[y * SIZ + tmp] == MAP[y * SIZ + x]) || (tmp != x - 1))
 			{
 				if (MAP[y * SIZ + tmp] == MAP[y * SIZ + x])
 					MAP[y * SIZ + tmp] = MAP[y * SIZ + x] + MAP[y * SIZ + x];
 				else if (tmp != x - 1)
 					MAP[y * SIZ + tmp + 1] = MAP[y * SIZ + x];
-				MAP[y * SIZ + x] = 0;
 			}
+			if ((MAP[y * SIZ + tmp] == 0)
+				|| (MAP[y * SIZ + tmp] == MAP[y * SIZ + x]) || (tmp != x - 1))
+				ft_reset_tile(ctx, y * SIZ + x);
 			++x;
 		}
 		++y;
@@ -110,34 +107,38 @@ void	ft_right(t_ctx *ctx, int x, int y, int tmp)
 			while (MAP[y * SIZ + tmp] == 0 && tmp < SIZ - 1)
 				++tmp;
 			if (MAP[y * SIZ + tmp] == 0)
-			{
 				MAP[y * SIZ + tmp] = MAP[y * SIZ + x];
-				MAP[y * SIZ + x] = 0;
-			}
 			else if ((MAP[y * SIZ + tmp] == MAP[y * SIZ + x]) || (tmp != x + 1))
 			{
 				if (MAP[y * SIZ + tmp] == MAP[y * SIZ + x])
 					MAP[y * SIZ + tmp] = MAP[y * SIZ + x] + MAP[y * SIZ + x];
 				else if (tmp != x + 1)
 					MAP[y * SIZ + tmp - 1] = MAP[y * SIZ + x];
-				MAP[y * SIZ + x] = 0;
 			}
+			if ((MAP[y * SIZ + tmp] == 0)
+				|| (MAP[y * SIZ + tmp] == MAP[y * SIZ + x]) || (tmp != x + 1))
+				ft_reset_tile(ctx, y * SIZ + x);
 			--x;
 		}
 		++y;
 	}
 }
 
-void	ft_mov(t_ctx *ctx, int key)
+int		ft_mov(t_ctx *ctx, int key)
 {
 	void (*p[4])(t_ctx *ctx, int x, int y, int tmp);
 
 	if (!(key >= 258 && key <= 261))
-		return ;
+		return (1);
 	p[0] = ft_down;
 	p[1] = ft_up;
 	p[2] = ft_left;
 	p[3] = ft_right;
 	(*p[key - 258])(ctx, 0, 0, 0);
-	ft_spawn(ctx, 0, 0);
+	if (ctx->moved)
+		ft_spawn(ctx, 0, 0);
+	ctx->moved = 0;
+	if (!ft_check_lock(ctx, 0, 0))
+		return (0);
+	return (1);
 }

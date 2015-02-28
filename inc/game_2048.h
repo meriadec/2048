@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 10:21:00 by bgronon           #+#    #+#             */
-/*   Updated: 2015/02/28 14:15:34 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/02/28 18:29:55 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct	s_ctx
 	int			size;
 	int			* map;
 	int			mov[2];
+	int			moved;
 }				t_ctx;
 
 /**
@@ -58,18 +59,20 @@ int				ft_error (char * msg);
 /**
 ** ft_mov.c
 */
-void			ft_mov (t_ctx * ctx, int key);
+int				ft_mov (t_ctx * ctx, int key);
 
 /**
 ** ft_game.c
 */
 void			ft_spawn (t_ctx * ctx, int i, int av);
+int				ft_check_lock(t_ctx *ctx, int i, int av);
 
 /**
 ** ft_utils.c
 */
 int				ft_ispowertwo (unsigned int x);
 int				ft_getpowexposant (int x);
+void			ft_reset_tile (t_ctx *ctx, int n);
 
 /**
 ** ft_mock

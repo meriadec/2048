@@ -15,6 +15,7 @@
 void	ft_spawn(t_ctx *ctx, int i, int av)
 {
 	int *tmp;
+	int random;
 
 	tmp = (int *)malloc((ctx->size * ctx->size) * sizeof(*ctx->map));
 	while (i < (ctx->size * ctx->size))
@@ -26,12 +27,18 @@ void	ft_spawn(t_ctx *ctx, int i, int av)
 		}
 		++i;
 	}
-	if (av == 0)
-	{
-		mvprintw(0, 0, "YOU LOOSE BITCH");
-		exit(42);
-		return ;
-	}
-	int random = rand() % av;
+	random = rand() % av;
 	ctx->map[tmp[random]] = 2;
+	free(tmp);
+}
+
+int		ft_check_lock(t_ctx *ctx, int i, int av)
+{
+	while (i < (ctx->size * ctx->size))
+	{
+		if (ctx->map[i] == 0)
+			++av;
+		++i;
+	}
+	return (av);
 }

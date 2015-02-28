@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 10:21:00 by bgronon           #+#    #+#             */
-/*   Updated: 2015/02/28 14:57:49 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/02/28 18:30:34 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int		st_init(t_ctx *ctx, int i)
 	}
 	ctx->mov[0] = 0;
 	ctx->mov[1] = 0;
+	ctx->moved = 0;
 	srand(time(NULL));
 	keypad(stdscr, TRUE);
 	noecho();
@@ -65,7 +66,8 @@ static void		st_loop(t_ctx *ctx)
 			ft_draw(ctx);
 		if (!st_has_enough_size(ctx))
 			return ;
-		ft_mov(ctx, key);
+		if (!ft_mov(ctx, key))
+			return ;
 		ft_draw(ctx);
 	}
 }
