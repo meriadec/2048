@@ -80,6 +80,7 @@ int				main(int ac, char **av)
 		return (ft_error("Init failed"));
 	if (ac == 3 && ft_strequ(av[1], "--mock"))
 		ft_mock(ctx, av[2]);
+	ft_spawn(ctx, 0, 0);
 	ft_draw(ctx);
 	st_loop(ctx);
 	endwin();

@@ -28,8 +28,6 @@ enum	e_const
 	WIN_VALUE = 2048
 };
 
-//typedef enum {KEY_UP = 0, KEY_DOWN, KEY_LEFT, KEY_RIGHT } keymap;
-
 typedef struct	s_ctx
 {
 	int			size;
@@ -59,9 +57,7 @@ void			ft_mov (t_ctx * ctx, int key);
 /**
 ** ft_game.c
 */
-void			ft_gravit (t_ctx * ctx);
 void			ft_spawn (t_ctx * ctx, int i, int av);
-
 
 /**
 ** ft_utils.c
