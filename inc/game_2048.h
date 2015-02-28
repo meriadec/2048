@@ -30,4 +30,11 @@ typedef struct	s_ctx
 	int			mov[2];
 }				t_ctx;
 
+/**
+** Prototypes
+*/
+
+void			ft_exit (int code);
+void			ft_error (char * msg);
+
 #endif

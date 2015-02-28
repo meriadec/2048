@@ -17,6 +17,7 @@ INCS				= -I inc -I ./inc -I libft/inc
 LIBS				= -L libft -lft -L /usr/lib -lncurses
 
 SRC					= $(DIR_SRC)/main.c \
+					  $(DIR_SRC)/error.c \
 
 # ---------------------------------------------------------------------------- #
 
