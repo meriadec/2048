@@ -79,4 +79,9 @@ void			ft_reset_tile (t_ctx *ctx, int n);
 */
 int				ft_mock(t_ctx *ctx, char *filename);
 
+/**
+** ft_finish
+*/
+void			ft_finish(t_ctx *ctx);
+
 #endif
