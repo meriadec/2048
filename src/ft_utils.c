@@ -20,3 +20,16 @@ int		ft_ispowertwo (unsigned int x)
 	}
 	return (x == 1);
 }
+
+int		ft_getpowexposant (int x)
+{
+	int	i;
+
+	i = 1;
+	while (x > 2)
+	{
+		x /= 2;
+		i++;
+	}
+	return (i);
+}

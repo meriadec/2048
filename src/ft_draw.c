@@ -12,6 +12,25 @@
 
 #include "game_2048.h"
 
+static void			st_draw_border(t_ctx *ctx, int n, int ch, int cw)
+{
+	int		x;
+	int		y;
+	int		color;
+
+	y = (n / ctx->size) * ch + 1;
+	color = COLOR_PAIR(ft_getpowexposant(ctx->map[n] / 16));
+	wattrset(stdscr, color);
+	x = (n % ctx->size) * cw + 3;
+	while (++x < (n % ctx->size) * cw + cw - 4)
+		mvprintw(y, x, " ");
+	x = (n % ctx->size) * cw + 3;
+	y = (n / ctx->size) * ch + ch - 1;
+	while (++x < (n % ctx->size) * cw + cw - 4)
+		mvprintw(y, x, " ");
+	wattroff(stdscr, color);
+}
+
 static void			st_draw_tile(t_ctx *ctx, int n, int ch, int cw)
 {
 	int		x;
@@ -22,22 +41,19 @@ static void			st_draw_tile(t_ctx *ctx, int n, int ch, int cw)
 		y = (n / ctx->size) * ch + 2;
 		while (y < (n / ctx->size) * ch + ch - 1)
 		{
-			wattrset(stdscr, COLOR_PAIR(ctx->map[n]));
+			wattrset(stdscr, COLOR_PAIR(ft_getpowexposant(ctx->map[n])));
 			x = (n % ctx->size) * cw + 3;
 			while (x < (n % ctx->size) * cw + cw - 3)
 			{
 				mvprintw(y, x, " ");
 				x++;
 			}
-			wattroff(stdscr, COLOR_PAIR(ctx->map[n]));
+			wattroff(stdscr, COLOR_PAIR(ft_getpowexposant(ctx->map[n])));
+			if (ctx->map[n] > 128)
+				st_draw_border(ctx, n, ch, cw);
 			y++;
 		}
-		mvprintw(
-			(n / ctx->size) * ch + 2 + (ch - 3) / 2,
-			(n % ctx->size) * cw + 3 + (cw - 6) / 2
-			- (ft_strlen(ft_itoa(ctx->map[n])) + 2) / 2,
-			" %d ",
-			ctx->map[n]);
+		mvprintw(TCTR_Y, TCTR_X, " %d ", ctx->map[n]);
 	}
 }
 
