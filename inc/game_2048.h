@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 10:21:00 by bgronon           #+#    #+#             */
-/*   Updated: 2015/02/28 12:02:47 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/02/28 12:26:50 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ enum e_const
 	WIN_VALUE = 2048
 };
 
-//enum keymap { KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT };
+//typedef enum {KEY_UP = 0, KEY_DOWN, KEY_LEFT, KEY_RIGHT } keymap;
 
 typedef struct	s_ctx
 {
@@ -31,10 +31,19 @@ typedef struct	s_ctx
 }				t_ctx;
 
 /**
-** Prototypes
-*/
-
+ * Prototypes
+ */
 void			ft_exit (int code);
 void			ft_error (char * msg);
+
+/**
+ * ft_mov.c
+ */
+void	ft_mov (t_ctx * ctx, int key);
+
+/**
+ * ft_utils.c
+ */
+int		ft_ispowertwo (unsigned int x);
 
 #endif

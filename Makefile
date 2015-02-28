@@ -18,6 +18,7 @@ LIBS				= -L libft -lft -L /usr/lib -lncurses
 
 SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/error.c \
+					  $(DIR_SRC)/ft_mov.c \
 
 # ---------------------------------------------------------------------------- #
 

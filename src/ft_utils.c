@@ -1,49 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 10:21:00 by bgronon           #+#    #+#             */
-/*   Updated: 2015/02/28 12:27:09 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/02/28 12:24:58 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
-#include <stdlib.h>
 
-int main(void)
+int		ft_ispowertwo (unsigned int x)
 {
-	t_ctx	* ctx;
-
-	if (!(ctx = (t_ctx *) malloc(sizeof(t_ctx))))
-		ft_error("Can't malloc 'ctx'");
-
-	if (!initscr()) {
-		ft_putendl("Init failed");
+	while (((x % 2) == 0) && x > 1)
+	{
+		x /= 2;
 	}
-
-	keypad(stdscr, TRUE);
-
-	int key;
-	while ((key = getch()) != 27) {
-		if (key == KEY_RESIZE) {
-			clear();
-			mvprintw(0, 0, "Col %d Line %d", COLS, LINES);
-			refresh();
-		}
-		if (key == KEY_UP) {
-			mvprintw(0, 0, "PUTE");
-			refresh();
-		}
-
-	}
-
-	endwin();
-	free(ctx);
-
-	//printf(" pute %d %d %d %d\n", KEY_DOWN, KEY_UP, KEY_LEFT, KEY_RIGHT);
-
-	return (0);
+	return (x == 1);
 }

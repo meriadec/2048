@@ -1,49 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_mov.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 10:21:00 by bgronon           #+#    #+#             */
-/*   Updated: 2015/02/28 12:27:09 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/02/28 12:21:45 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
-#include <stdlib.h>
 
-int main(void)
+void	ft_down (t_ctx * ctx)
 {
-	t_ctx	* ctx;
+	ctx->mov[0] = 0;
+	ctx->mov[1] = 1;
+}
 
-	if (!(ctx = (t_ctx *) malloc(sizeof(t_ctx))))
-		ft_error("Can't malloc 'ctx'");
+void	ft_up (t_ctx * ctx)
+{
+	ctx->mov[0] = 0;
+	ctx->mov[1] = -1;
+}
 
-	if (!initscr()) {
-		ft_putendl("Init failed");
-	}
+void	ft_left (t_ctx * ctx)
+{
+	ctx->mov[0] = -1;
+	ctx->mov[1] = 0;
+}
 
-	keypad(stdscr, TRUE);
+void	ft_right (t_ctx * ctx)
+{
+	ctx->mov[0] = 1;
+	ctx->mov[1] = 0;
+}
 
-	int key;
-	while ((key = getch()) != 27) {
-		if (key == KEY_RESIZE) {
-			clear();
-			mvprintw(0, 0, "Col %d Line %d", COLS, LINES);
-			refresh();
-		}
-		if (key == KEY_UP) {
-			mvprintw(0, 0, "PUTE");
-			refresh();
-		}
+void	ft_gravity (void)
+{
 
-	}
+}
 
-	endwin();
-	free(ctx);
+void	ft_mov (t_ctx * ctx, int key)
+{
+	void (*p[4])(t_ctx * ctx);
 
-	//printf(" pute %d %d %d %d\n", KEY_DOWN, KEY_UP, KEY_LEFT, KEY_RIGHT);
+	p[0] = ft_down;
+	p[1] = ft_up;
+	p[2] = ft_left;
+	p[3] = ft_right;
 
-	return (0);
+	(*p[key - 258])(ctx);
 }
