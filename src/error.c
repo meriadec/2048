@@ -6,20 +6,20 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:07:53 by mpillet           #+#    #+#             */
-/*   Updated: 2015/02/28 12:10:05 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/02/28 14:13:40 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "game_2048.h"
 
-void			ft_error (char * msg)
+void			ft_error(char *msg)
 {
 	ft_putstr_fd(msg, 2);
 	ft_exit(1);
 }
 
-void			ft_exit (int code)
+void			ft_exit(int code)
 {
 	exit(code);
 }
