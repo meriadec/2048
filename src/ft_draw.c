@@ -17,11 +17,27 @@ static void			st_draw_tile(t_ctx *ctx, int n, int ch, int cw)
 	int		x;
 	int		y;
 
-	y = (n / ctx->size) * ch + 2;
-	x = (n % ctx->size) * cw + 2;
 	if (ctx->map[n])
 	{
-		mvprintw(y, x, "%d", ctx->map[n]);
+		y = (n / ctx->size) * ch + 2;
+		while (y < (n / ctx->size) * ch + ch - 1)
+		{
+			wattrset(stdscr, COLOR_PAIR(4));
+			x = (n % ctx->size) * cw + 3;
+			while (x < (n % ctx->size) * cw + cw - 3)
+			{
+				mvprintw(y, x, " ");
+				x++;
+			}
+			wattroff(stdscr, COLOR_PAIR(4));
+			y++;
+		}
+		mvprintw(
+			(n / ctx->size) * ch + 2 + (ch - 2) / 2,
+			(n % ctx->size) * cw + 3 + (cw - 6) / 2
+			- (ft_strlen(ft_itoa(ctx->map[n])) + 2) / 2,
+			" %d ",
+			ctx->map[n]);
 	}
 }
 

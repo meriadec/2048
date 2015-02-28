@@ -13,10 +13,21 @@
 #include "game_2048.h"
 #include <time.h>
 
+static void		st_init_colors(void)
+{
+	start_color();
+	init_pair(1, COLOR_RED, COLOR_BLACK);
+	init_pair(2, COLOR_GREEN, COLOR_GREEN);
+	init_pair(3, COLOR_BLUE, COLOR_BLACK);
+	init_pair(4, COLOR_WHITE, COLOR_BLUE);
+	init_pair(5, COLOR_RED, COLOR_BLACK);
+}
+
 static int		st_init(t_ctx *ctx, int i)
 {
 	if (!initscr())
 		return (ft_error("Can't init screen"));
+	st_init_colors();
 	ctx->size = 4;
 	ctx->map = (int *)malloc((ctx->size * ctx->size) * sizeof(*ctx->map));
 	while (i < ctx->size * ctx->size)
@@ -28,6 +39,7 @@ static int		st_init(t_ctx *ctx, int i)
 	ctx->mov[1] = 0;
 	srand(time(NULL));
 	keypad(stdscr, TRUE);
+	noecho();
 	curs_set(0);
 	return (0);
 }
