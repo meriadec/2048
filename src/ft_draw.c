@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:04:54 by mpillet           #+#    #+#             */
-/*   Updated: 2015/02/28 13:23:09 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/02/28 18:24:45 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static void			st_draw_border(t_ctx *ctx, int n, int ch, int cw)
 	int		y;
 	int		color;
 
-	y = (n / ctx->size) * ch + 1;
+	y = (n / ctx->size) * ch + 2;
 	color = COLOR_PAIR(ft_getpowexposant(ctx->map[n] / 16));
 	wattrset(stdscr, color);
-	x = (n % ctx->size) * cw + 3;
-	while (++x < (n % ctx->size) * cw + cw - 4)
+	x = (n % ctx->size) * cw + 2;
+	while (++x < (n % ctx->size) * cw + cw - 3)
 		mvprintw(y, x, " ");
-	x = (n % ctx->size) * cw + 3;
-	y = (n / ctx->size) * ch + ch - 1;
-	while (++x < (n % ctx->size) * cw + cw - 4)
+	x = (n % ctx->size) * cw + 2;
+	y = (n / ctx->size) * ch + ch - 2;
+	while (++x < (n % ctx->size) * cw + cw - 3)
 		mvprintw(y, x, " ");
 	wattroff(stdscr, color);
 }
