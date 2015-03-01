@@ -34,7 +34,8 @@ static void		st_showbox(char *msg, int x, int y)
 	mvprintw(y, x - 1, " %s ", msg);
 	wattroff(stdscr, COLOR_PAIR(1));
 	mvprintw(y + 3, x - 1, "<ENTER>    Start the game");
-	mvprintw(y + 4, x - 1, "<ECHAP>    Quit");
+	mvprintw(y + 4, x - 1, "<H>        Show highscores");
+	mvprintw(y + 5, x - 1, "<ECHAP>    Quit");
 	refresh();
 }
 
@@ -49,6 +50,8 @@ void			ft_menu(t_ctx *ctx)
 	{
 		if (key == KEY_RESIZE)
 			st_showbox(msg, 0, 0);
+		if (key == 104)
+			ft_show_highscore();
 		if (key == 10)
 		{
 			ft_loop(ctx);

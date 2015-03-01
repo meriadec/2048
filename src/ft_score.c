@@ -20,6 +20,8 @@ void	ft_save_highscore(t_ctx *ctx)
 	char	*score;
 	char	*login;
 
+	if (ctx->score <= 0)
+		return ;
 	fd = open("scores.txt", O_WRONLY | O_APPEND | O_CREAT, 0666);
 	if (fd != -1)
 	{
@@ -31,4 +33,29 @@ void	ft_save_highscore(t_ctx *ctx)
 		free(score);
 		close(fd);
 	}
+}
+
+void	ft_show_highscore(void)
+{
+	int		i;
+	int		fd;
+	char	*line;
+
+	clear();
+	i = 2;
+	fd = open("scores.txt", O_RDONLY);
+	if (fd != -1)
+	{
+		mvprintw(LINES / 2 - 10, COLS / 2 - 15, "SCORES");
+		while (get_next_line(fd, &line) && i <= 10)
+		{
+			mvprintw(LINES / 2 - 10 + i, COLS / 2 - 15, line);
+			++i;
+			free(line);
+		}
+		close(fd);
+	}
+	mvprintw(LINES / 2 - 10 + 12, COLS / 2 - 15, "<ENTER>    Start the game");
+	mvprintw(LINES / 2 - 10 + 13, COLS / 2 - 15, "<ECHAP>    Quit");
+	refresh();
 }

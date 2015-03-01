@@ -103,6 +103,7 @@ void			ft_menu(t_ctx *ctx);
 ** ft_score
 */
 void			ft_save_highscore(t_ctx *ctx);
+void			ft_show_highscore(void);
 
 /*
 ** ft_dialog
