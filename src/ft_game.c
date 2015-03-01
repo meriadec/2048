@@ -14,8 +14,8 @@
 
 void	ft_spawn(t_ctx *ctx, int i, int av)
 {
-	int *tmp;
-	int random;
+	int	*tmp;
+	int	random;
 
 	tmp = (int *)malloc((ctx->size * ctx->size) * sizeof(*ctx->map));
 	while (i < (ctx->size * ctx->size))
@@ -28,7 +28,7 @@ void	ft_spawn(t_ctx *ctx, int i, int av)
 		++i;
 	}
 	random = rand() % av;
-	ctx->map[tmp[random]] = 2;
+	ctx->map[tmp[random]] = (rand() % 10 < 8) ? 2 : 4;
 	free(tmp);
 }
 
