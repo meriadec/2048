@@ -28,6 +28,7 @@ static void		st_init_colors(void)
 	init_pair(10, COLOR_WHITE, COLOR_WHITE);
 	init_pair(11, COLOR_WHITE, COLOR_WHITE);
 	init_pair(12, COLOR_BLACK, COLOR_BLACK);
+	init_pair(13, COLOR_BLUE, COLOR_BLACK);
 }
 
 static int		st_init(t_ctx *ctx, int i)

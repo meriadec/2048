@@ -44,17 +44,21 @@ void	ft_show_highscore(void)
 	clear();
 	i = 2;
 	fd = open("scores.txt", O_RDONLY);
+	wattrset(stdscr, COLOR_PAIR(13));
+	mvprintw(LINES / 2 - 10, COLS / 2 - 15, "SCORES");
+	wattroff(stdscr, COLOR_PAIR(1));
 	if (fd != -1)
 	{
-		mvprintw(LINES / 2 - 10, COLS / 2 - 15, "SCORES");
 		while (get_next_line(fd, &line) && i <= 10)
 		{
 			mvprintw(LINES / 2 - 10 + i, COLS / 2 - 15, line);
 			++i;
 			free(line);
 		}
-		close(fd);
 	}
+	while (i++ <= 10)
+		mvprintw(LINES / 2 - 10 + i - 1, COLS / 2 - 15, "-");
+	close(fd);
 	mvprintw(LINES / 2 - 10 + 12, COLS / 2 - 15, "<ENTER>    Start the game");
 	mvprintw(LINES / 2 - 10 + 13, COLS / 2 - 15, "<ECHAP>    Quit");
 	refresh();
