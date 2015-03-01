@@ -32,22 +32,33 @@ void	ft_spawn(t_ctx *ctx, int i, int av)
 	free(tmp);
 }
 
-int		ft_check_lock(t_ctx *ctx, int i, int av)
+int		ft_check_lock(t_ctx *ctx, int i)
 {
 	while (i < (ctx->size * ctx->size))
 	{
 		if (ctx->map[i] == 0)
-			++av;
+			return (1);
+		else
+		{
+			if (i > SIZ && MAP[i - SIZ] == MAP[i])
+				return (1);
+			if (i < (SIZ * SIZ) - SIZ && MAP[i + SIZ] == MAP[i])
+				return (1);
+			if (i % SIZ > 0 && MAP[i - 1] == MAP[i])
+				return (1);
+			if (i % SIZ < SIZ - 1 && MAP[i + 1] == MAP[i])
+				return (1);
+		}
 		++i;
 	}
-	return (av);
+	return (0);
 }
 
 int		ft_check_win(t_ctx *ctx, int i)
 {
 	while (i < (ctx->size * ctx->size))
 	{
-		if (ctx->map[i] == 2048)
+		if (ctx->map[i] == WIN_VALUE)
 		{
 			ctx->win = 1;
 			return (1);
