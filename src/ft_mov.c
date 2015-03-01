@@ -6,13 +6,13 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:31:32 by bgronon           #+#    #+#             */
-/*   Updated: 2015/02/28 17:33:18 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/03/01 16:34:23 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game_2048.h"
 
-void	ft_up(t_ctx *ctx, int x, int y, int tmp)
+static void	ft_up(t_ctx *ctx, int x, int y, int tmp)
 {
 	while (x < SIZ)
 	{
@@ -41,7 +41,7 @@ void	ft_up(t_ctx *ctx, int x, int y, int tmp)
 	}
 }
 
-void	ft_down(t_ctx *ctx, int x, int y, int tmp)
+static void	ft_down(t_ctx *ctx, int x, int y, int tmp)
 {
 	while (x < SIZ)
 	{
@@ -70,7 +70,7 @@ void	ft_down(t_ctx *ctx, int x, int y, int tmp)
 	}
 }
 
-void	ft_left(t_ctx *ctx, int x, int y, int tmp)
+static void	ft_left(t_ctx *ctx, int x, int y, int tmp)
 {
 	while (y < SIZ)
 	{
@@ -99,7 +99,7 @@ void	ft_left(t_ctx *ctx, int x, int y, int tmp)
 	}
 }
 
-void	ft_right(t_ctx *ctx, int x, int y, int tmp)
+static void	ft_right(t_ctx *ctx, int x, int y, int tmp)
 {
 	while (y < SIZ)
 	{
@@ -128,7 +128,7 @@ void	ft_right(t_ctx *ctx, int x, int y, int tmp)
 	}
 }
 
-int		ft_mov(t_ctx *ctx, int key)
+int			ft_mov(t_ctx *ctx, int key)
 {
 	void (*p[4])(t_ctx *ctx, int x, int y, int tmp);
 
