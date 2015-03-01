@@ -85,20 +85,24 @@ static void			st_draw_cell(t_ctx *ctx, int n, int ch, int cw)
 	st_draw_tile(ctx, n, ch, cw);
 }
 
-static void			st_draw_status(t_ctx *ctx, int n, int ch)
+static void			st_draw_status(t_ctx *ctx, int x)
 {
-	int		x;
 	char	*str;
+	int		color;
 
-	x = 0;
+	color = COLOR_PAIR(1);
+	wattrset(stdscr, color);
 	while (x < COLS)
 	{
-		mvprintw((n / ctx->size) * ch, x, "-");
+		mvprintw(LINES - 1, x, " ");
+		mvprintw(LINES - 2, x, " ");
+		mvprintw(LINES - 3, x, " ");
 		++x;
 	}
-	mvprintw(LINES - 3, 2, "Score: ");
+	mvprintw(LINES - 2, 2, "SCORE");
 	str = ft_itoa(ctx->score);
-	mvprintw(LINES - 3, 9, str);
+	mvprintw(LINES - 2, 8, str);
+	wattroff(stdscr, color);
 	free(str);
 }
 
@@ -117,6 +121,6 @@ void				ft_draw(t_ctx *ctx)
 		st_draw_cell(ctx, n, ch, cw);
 		++n;
 	}
-	st_draw_status(ctx, n, ch);
+	st_draw_status(ctx, 0);
 	refresh();
 }
