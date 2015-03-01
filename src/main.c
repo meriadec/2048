@@ -63,5 +63,6 @@ int				main(int ac, char **av)
 	if (ac == 3 && ft_strequ(av[1], "--mock"))
 		ft_mock(ctx, av[2]);
 	ft_menu(ctx);
+	ft_finish(ctx);
 	return (0);
 }

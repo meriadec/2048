@@ -18,6 +18,7 @@ static void		st_showbox(char *msg, int x, int y)
 	int		y1;
 	int		len;
 
+	clear();
 	x = COLS / 2 - ft_strlen(msg) / 2 - 1;
 	y = LINES / 2 - 1;
 	x1 = x - 1;
@@ -42,7 +43,6 @@ void			ft_menu(t_ctx *ctx)
 	char	*msg;
 	int		key;
 
-	clear();
 	msg = ft_strdup("    WELCOME TO 2042    ");
 	st_showbox(msg, 0, 0);
 	while ((key = getch()) != 27)
@@ -56,6 +56,4 @@ void			ft_menu(t_ctx *ctx)
 		}
 	}
 	ft_memdel((void **)&msg);
-	if (key == 27)
-		ft_finish(ctx);
 }

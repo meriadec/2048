@@ -19,7 +19,7 @@ static int		st_has_enough_size(t_ctx *ctx)
 	ret = (COLS / ctx->size >= MIN_CELL_W && LINES / ctx->size >= MIN_CELL_H);
 	if (!ret)
 	{
-		ft_finish(ctx);
+		endwin();
 		ft_putendl("\n\nYour window is too small (nice try..)\n\n");
 	}
 	return (ret);
@@ -38,11 +38,9 @@ void			ft_loop(t_ctx *ctx)
 		if (key == KEY_RESIZE)
 			ft_draw(ctx);
 		if (!st_has_enough_size(ctx))
-			return ;
+			break ;
 		if (!ft_mov(ctx, key))
-			return ;
+			break ;
 		ft_draw(ctx);
 	}
-	if (key == 27)
-		ft_finish(ctx);
 }
