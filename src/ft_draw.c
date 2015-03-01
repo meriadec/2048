@@ -64,24 +64,22 @@ static void			st_draw_cell(t_ctx *ctx, int n, int ch, int cw)
 
 	y = (n / ctx->size) * ch;
 	x = (n % ctx->size) * cw;
+	wattrset(stdscr, COLOR_PAIR(1));
 	if (n / ctx->size != 0)
 	{
 		while (x < (n % ctx->size) * cw + cw)
 		{
-			mvprintw(y, x, "-");
+			mvprintw(y, x, " ");
 			++x;
 		}
 		x = (n % ctx->size) * cw;
 	}
 	if (n % ctx->size != 0)
 	{
-		++y;
-		while (y < (n / ctx->size) * ch + ch)
-		{
-			mvprintw(y, x, "|");
-			++y;
-		}
+		while (y++ < (n / ctx->size) * ch + ch)
+			mvprintw(y, x, " ");
 	}
+	wattroff(stdscr, COLOR_PAIR(1));
 	st_draw_tile(ctx, n, ch, cw);
 }
 
