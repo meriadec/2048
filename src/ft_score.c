@@ -20,7 +20,7 @@ void	ft_save_highscore(t_ctx *ctx)
 	char	*score;
 	char	*login;
 
-	fd = open("highscores.zavattas", O_WRONLY | O_APPEND | O_CREAT, 0666);
+	fd = open("scores.txt", O_WRONLY | O_APPEND | O_CREAT, 0666);
 	if (fd != -1)
 	{
 		score = ft_itoa(ctx->score);
