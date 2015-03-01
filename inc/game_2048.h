@@ -99,4 +99,9 @@ void			ft_loop(t_ctx *ctx);
 */
 void			ft_menu(t_ctx *ctx);
 
+/*
+** ft_score
+*/
+void			ft_save_highscore(t_ctx *ctx);
+
 #endif
