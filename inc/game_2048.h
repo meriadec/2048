@@ -51,32 +51,33 @@ typedef struct	s_ctx
 /*
 ** ft_draw
 */
-void			ft_draw (t_ctx *ctx);
+void			ft_draw(t_ctx *ctx);
 
 /*
 ** errors
 */
-int				ft_error (char *msg);
+int				ft_error(char *msg);
 
 /*
 ** ft_mov.c
 */
-int				ft_mov (t_ctx *ctx, int key);
+int				ft_mov(t_ctx *ctx, int key);
 
 /*
 ** ft_game.c
 */
-void			ft_spawn (t_ctx *ctx, int i, int av);
+void			ft_spawn(t_ctx *ctx, int i, int av);
 int				ft_check_lock(t_ctx *ctx, int i);
 int				ft_check_win(t_ctx *ctx, int i);
 
 /*
 ** ft_utils.c
 */
-int				ft_ispowertwo (unsigned int x);
-int				ft_getpowexposant (int x);
-void			ft_reset_tile (t_ctx *ctx, int n);
+int				ft_ispowertwo(unsigned int x);
+int				ft_getpowexposant(int x);
+void			ft_reset_tile(t_ctx *ctx, int n);
 void			ft_fusion_tile(t_ctx *ctx, int n, int val);
+void			ft_move_tile(t_ctx *ctx, int n, int val);
 
 /*
 ** ft_mock
