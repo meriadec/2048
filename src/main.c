@@ -33,12 +33,14 @@ static void		st_init_colors(void)
 
 static int		st_init(t_ctx *ctx, int i)
 {
+	ctx->size = NB_CELLS;
+	if (ctx->size < 3 || ctx->size > 10)
+		return (ft_error("Ahaha nice try."));
 	if (!ft_ispowertwo(WIN_VALUE))
 		return (ft_error("The win value is not a power of two."));
 	if (!initscr())
 		return (ft_error("Can't init screen"));
 	st_init_colors();
-	ctx->size = 4;
 	ctx->map = (int *)malloc((ctx->size * ctx->size) * sizeof(*ctx->map));
 	while (i++ < ctx->size * ctx->size)
 		ctx->map[i] = 0;
