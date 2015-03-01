@@ -35,6 +35,7 @@ static void			st_draw_tile(t_ctx *ctx, int n, int ch, int cw)
 {
 	int		x;
 	int		y;
+	char	*str;
 
 	if (ctx->map[n])
 	{
@@ -53,7 +54,9 @@ static void			st_draw_tile(t_ctx *ctx, int n, int ch, int cw)
 				st_draw_border(ctx, n, ch, cw);
 			y++;
 		}
+		str = ft_itoa(ctx->map[n]);
 		mvprintw(TCTR_Y, TCTR_X, " %d ", ctx->map[n]);
+		ft_memdel((void **)&str);
 	}
 }
 
