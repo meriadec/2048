@@ -45,7 +45,7 @@ all: libft $(NAME)
 libft:
 	@$(MAKE) -C libft
 
-$(addprefix $(DIR_OBJ)/, %.o): %.c $(DIR_INC)
+$(addprefix $(DIR_OBJ)/, %.o): %.c ./inc/*.h
 	@printf "compiling \e[33m%-41s\e[0m" "$@..."
 	@$(CC) $(FLAG) $(INCS) -o $@ -c $<
 	@printf "\e[32m[✔]\e[0m\n"
