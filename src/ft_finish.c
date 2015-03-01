@@ -15,5 +15,6 @@
 void			ft_finish(t_ctx *ctx)
 {
 	endwin();
+	ft_save_highscore(ctx);
 	free(ctx);
 }
