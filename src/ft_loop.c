@@ -30,6 +30,7 @@ void			ft_loop(t_ctx *ctx)
 	int		key;
 
 	ft_spawn(ctx, 0, 0);
+	ft_spawn(ctx, 0, 0);
 	ft_draw(ctx);
 	if (!st_has_enough_size(ctx))
 		return ;
