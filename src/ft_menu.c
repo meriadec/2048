@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/01 11:50:49 by mpillet           #+#    #+#             */
-/*   Updated: 2015/03/01 12:45:27 by mpillet          ###   ########.fr       */
+/*   Updated: 2015/03/01 14:16:35 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ void			ft_menu(t_ctx *ctx)
 			st_showbox(msg, 0, 0);
 		if (key == 10)
 		{
-
 			ft_loop(ctx);
-			break;
+			break ;
 		}
 	}
 	ft_memdel((void **)&msg);
