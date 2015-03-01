@@ -85,6 +85,23 @@ static void			st_draw_cell(t_ctx *ctx, int n, int ch, int cw)
 	st_draw_tile(ctx, n, ch, cw);
 }
 
+static void			st_draw_status(t_ctx *ctx, int n, int ch)
+{
+	int		x;
+	char	*str;
+
+	x = 0;
+	while (x < COLS)
+	{
+		mvprintw((n / ctx->size) * ch, x, "-");
+		++x;
+	}
+	mvprintw(LINES - 3, 2, "Score: ");
+	str = ft_itoa(ctx->score);
+	mvprintw(LINES - 3, 9, str);
+	free(str);
+}
+
 void				ft_draw(t_ctx *ctx)
 {
 	int		cw;
@@ -93,12 +110,13 @@ void				ft_draw(t_ctx *ctx)
 
 	clear();
 	cw = COLS / ctx->size;
-	ch = LINES / ctx->size;
+	ch = LINES / ctx->size - 1;
 	n = 0;
 	while (n < ctx->size * ctx->size)
 	{
 		st_draw_cell(ctx, n, ch, cw);
 		++n;
 	}
+	st_draw_status(ctx, n, ch);
 	refresh();
 }

@@ -45,6 +45,7 @@ static int		st_init(t_ctx *ctx, int i)
 	ctx->mov[1] = 0;
 	ctx->moved = 0;
 	ctx->win = 0;
+	ctx->score = 0;
 	srand(time(NULL));
 	keypad(stdscr, TRUE);
 	noecho();

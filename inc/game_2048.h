@@ -41,6 +41,7 @@ typedef struct	s_ctx
 	int			mov[2];
 	int			moved;
 	int			win;
+	int			score;
 }				t_ctx;
 
 /*
@@ -75,6 +76,7 @@ int				ft_check_win(t_ctx *ctx, int i);
 int				ft_ispowertwo (unsigned int x);
 int				ft_getpowexposant (int x);
 void			ft_reset_tile (t_ctx *ctx, int n);
+void			ft_fusion_tile(t_ctx *ctx, int n, int val);
 
 /*
 ** ft_mock

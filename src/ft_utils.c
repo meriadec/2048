@@ -39,3 +39,9 @@ void	ft_reset_tile(t_ctx *ctx, int n)
 	MAP[n] = 0;
 	ctx->moved = 1;
 }
+
+void	ft_fusion_tile(t_ctx *ctx, int n, int val)
+{
+	MAP[n] = val + val;
+	ctx->score += (val + val);
+}
