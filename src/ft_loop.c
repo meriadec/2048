@@ -14,13 +14,15 @@
 
 static int		st_has_enough_size(t_ctx *ctx)
 {
-	int	ret = (COLS/ctx->size >= MIN_CELL_W && LINES/ctx->size >= MIN_CELL_H);
+	int	ret;
+
+	ret = (COLS / ctx->size >= MIN_CELL_W && LINES / ctx->size >= MIN_CELL_H);
 	if (!ret)
 	{
 		ft_finish(ctx);
 		ft_putendl("\n\nYour window is too small (nice try..)\n\n");
 	}
-	return ret;
+	return (ret);
 }
 
 void			ft_loop(t_ctx *ctx)

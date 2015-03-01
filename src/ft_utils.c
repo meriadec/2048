@@ -34,7 +34,7 @@ int		ft_getpowexposant(int x)
 	return (i);
 }
 
-void	ft_reset_tile (t_ctx *ctx, int n)
+void	ft_reset_tile(t_ctx *ctx, int n)
 {
 	MAP[n] = 0;
 	ctx->moved = 1;

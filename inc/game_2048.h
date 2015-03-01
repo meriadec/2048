@@ -17,7 +17,7 @@
 # include <ncurses.h>
 # include <stdlib.h>
 
-/**
+/*
 ** Defines
 */
 # define MIN_CELL_W		15
@@ -37,56 +37,56 @@ enum	e_const
 typedef struct	s_ctx
 {
 	int			size;
-	int			* map;
+	int			*map;
 	int			mov[2];
 	int			moved;
 	int			win;
 }				t_ctx;
 
-/**
+/*
 ** Prototypes
 */
 
-/**
+/*
 ** ft_draw
 */
-void			ft_draw (t_ctx * ctx);
+void			ft_draw (t_ctx *ctx);
 
-/**
+/*
 ** errors
 */
-int				ft_error (char * msg);
+int				ft_error (char *msg);
 
-/**
+/*
 ** ft_mov.c
 */
-int				ft_mov (t_ctx * ctx, int key);
+int				ft_mov (t_ctx *ctx, int key);
 
-/**
+/*
 ** ft_game.c
 */
-void			ft_spawn (t_ctx * ctx, int i, int av);
+void			ft_spawn (t_ctx *ctx, int i, int av);
 int				ft_check_lock(t_ctx *ctx, int i, int av);
 int				ft_check_win(t_ctx *ctx, int i);
 
-/**
+/*
 ** ft_utils.c
 */
 int				ft_ispowertwo (unsigned int x);
 int				ft_getpowexposant (int x);
 void			ft_reset_tile (t_ctx *ctx, int n);
 
-/**
+/*
 ** ft_mock
 */
 int				ft_mock(t_ctx *ctx, char *filename);
 
-/**
+/*
 ** ft_finish
 */
 void			ft_finish(t_ctx *ctx);
 
-/**
+/*
 ** ft_loop
 */
 void			ft_loop(t_ctx *ctx);
