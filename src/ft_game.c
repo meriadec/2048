@@ -61,6 +61,7 @@ int		ft_check_win(t_ctx *ctx, int i)
 		if (ctx->map[i] == WIN_VALUE)
 		{
 			ctx->win = 1;
+			ft_dialog("You win ! Congratulations !", "Continue");
 			return (1);
 		}
 		++i;

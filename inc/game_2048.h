@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 10:21:00 by bgronon           #+#    #+#             */
-/*   Updated: 2015/02/28 18:29:55 by bgronon          ###   ########.fr       */
+/*   Updated: 2015/03/01 15:54:11 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,10 @@ void			ft_menu(t_ctx *ctx);
 ** ft_score
 */
 void			ft_save_highscore(t_ctx *ctx);
+
+/*
+** ft_dialog
+*/
+void			ft_dialog(char *msg, char *opt);
 
 #endif

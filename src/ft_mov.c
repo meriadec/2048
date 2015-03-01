@@ -136,8 +136,7 @@ int		ft_mov(t_ctx *ctx, int key)
 		return (1);
 	if (!ft_check_lock(ctx, 0))
 	{
-		endwin();
-		ft_putendl("Vous avez ete bloque, grosse merde.");
+		ft_dialog("You loose, bro.", "Quit");
 		return (0);
 	}
 	p[0] = ft_down;
