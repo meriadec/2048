@@ -42,3 +42,17 @@ int		ft_check_lock(t_ctx *ctx, int i, int av)
 	}
 	return (av);
 }
+
+int		ft_check_win(t_ctx *ctx, int i)
+{
+	while (i < (ctx->size * ctx->size))
+	{
+		if (ctx->map[i] == 2048)
+		{
+			ctx->win = 1;
+			return (1);
+		}
+		++i;
+	}
+	return (0);
+}

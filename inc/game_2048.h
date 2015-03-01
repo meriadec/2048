@@ -40,6 +40,7 @@ typedef struct	s_ctx
 	int			* map;
 	int			mov[2];
 	int			moved;
+	int			win;
 }				t_ctx;
 
 /**
@@ -66,6 +67,7 @@ int				ft_mov (t_ctx * ctx, int key);
 */
 void			ft_spawn (t_ctx * ctx, int i, int av);
 int				ft_check_lock(t_ctx *ctx, int i, int av);
+int				ft_check_win(t_ctx *ctx, int i);
 
 /**
 ** ft_utils.c
