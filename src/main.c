@@ -38,11 +38,8 @@ static int		st_init(t_ctx *ctx, int i)
 	st_init_colors();
 	ctx->size = 4;
 	ctx->map = (int *)malloc((ctx->size * ctx->size) * sizeof(*ctx->map));
-	while (i < ctx->size * ctx->size)
-	{
+	while (i++ < ctx->size * ctx->size)
 		ctx->map[i] = 0;
-		++i;
-	}
 	ctx->mov[0] = 0;
 	ctx->mov[1] = 0;
 	ctx->moved = 0;
@@ -61,7 +58,7 @@ int				main(int ac, char **av)
 
 	if (!(ctx = (t_ctx *)malloc(sizeof(t_ctx))))
 		return (ft_error("Can't malloc 'ctx'"));
-	if (-1 == st_init(ctx, 0))
+	if (-1 == st_init(ctx, -1))
 		return (-1);
 	if (ac == 3 && ft_strequ(av[1], "--mock"))
 		ft_mock(ctx, av[2]);
