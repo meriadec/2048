@@ -31,6 +31,8 @@ static void		st_init_colors(void)
 
 static int		st_init(t_ctx *ctx, int i)
 {
+	if (!ft_ispowertwo(WIN_VALUE))
+		return (ft_error("The win value is not a power of two."));
 	if (!initscr())
 		return (ft_error("Can't init screen"));
 	st_init_colors();
@@ -60,7 +62,7 @@ int				main(int ac, char **av)
 	if (!(ctx = (t_ctx *)malloc(sizeof(t_ctx))))
 		return (ft_error("Can't malloc 'ctx'"));
 	if (-1 == st_init(ctx, 0))
-		return (ft_error("Init failed"));
+		return (-1);
 	if (ac == 3 && ft_strequ(av[1], "--mock"))
 		ft_mock(ctx, av[2]);
 	ft_menu(ctx);

@@ -14,6 +14,6 @@
 
 int				ft_error(char *msg)
 {
-	ft_putstr_fd(msg, 2);
-	return (1);
+	ft_putendl_fd(msg, 2);
+	return (-1);
 }
