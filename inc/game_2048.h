@@ -31,7 +31,8 @@
 
 enum	e_const
 {
-	WIN_VALUE = 2048
+	WIN_VALUE = 2048,
+	NB_CELLS = 4
 };
 
 typedef struct	s_ctx
