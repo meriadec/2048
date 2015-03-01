@@ -54,7 +54,7 @@ int		ft_check_lock(t_ctx *ctx, int i)
 	return (0);
 }
 
-int		ft_check_win(t_ctx *ctx, int i)
+void	ft_check_win(t_ctx *ctx, int i)
 {
 	while (i < (ctx->size * ctx->size))
 	{
@@ -62,9 +62,8 @@ int		ft_check_win(t_ctx *ctx, int i)
 		{
 			ctx->win = 1;
 			ft_dialog("You win ! Congratulations !", "Continue");
-			return (1);
+			return ;
 		}
 		++i;
 	}
-	return (0);
 }

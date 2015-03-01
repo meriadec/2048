@@ -147,5 +147,7 @@ int		ft_mov(t_ctx *ctx, int key)
 	if (ctx->moved)
 		ft_spawn(ctx, 0, 0);
 	ctx->moved = 0;
+	if (!ctx->win)
+		ft_check_win(ctx, 0);
 	return (1);
 }
