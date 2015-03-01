@@ -27,6 +27,8 @@ void	ft_spawn(t_ctx *ctx, int i, int av)
 		}
 		++i;
 	}
+	if (av == 0)
+		return ;
 	random = rand() % av;
 	ctx->map[tmp[random]] = (rand() % 10 < 8) ? 2 : 4;
 	free(tmp);
