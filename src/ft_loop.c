@@ -43,4 +43,6 @@ void			ft_loop(t_ctx *ctx)
 			return ;
 		ft_draw(ctx);
 	}
+	if (key == 27)
+		ft_finish(ctx);
 }

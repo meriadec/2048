@@ -93,4 +93,9 @@ void			ft_finish(t_ctx *ctx);
 */
 void			ft_loop(t_ctx *ctx);
 
+/*
+** ft_menu
+*/
+void			ft_menu(t_ctx *ctx);
+
 #endif

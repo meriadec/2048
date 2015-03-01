@@ -16,7 +16,7 @@
 static void		st_init_colors(void)
 {
 	start_color();
-	init_pair(1, COLOR_WHITE, COLOR_WHITE);
+	init_pair(1, COLOR_BLACK, COLOR_WHITE);
 	init_pair(2, COLOR_WHITE, COLOR_YELLOW);
 	init_pair(3, COLOR_WHITE, COLOR_GREEN);
 	init_pair(4, COLOR_WHITE, COLOR_CYAN);
@@ -63,7 +63,6 @@ int				main(int ac, char **av)
 		return (ft_error("Init failed"));
 	if (ac == 3 && ft_strequ(av[1], "--mock"))
 		ft_mock(ctx, av[2]);
-	//ft_menu(ctx);
-	ft_loop(ctx);
+	ft_menu(ctx);
 	return (0);
 }

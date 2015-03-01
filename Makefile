@@ -25,6 +25,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_utils.c \
 					  $(DIR_SRC)/ft_finish.c \
 					  $(DIR_SRC)/ft_loop.c \
+					  $(DIR_SRC)/ft_menu.c \
 
 # ---------------------------------------------------------------------------- #
 
