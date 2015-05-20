@@ -15,14 +15,12 @@
 static void		st_showbox(char *msg, int x, int y)
 {
 	int		x1;
-	int		y1;
 	int		len;
 
 	clear();
 	x = COLS / 2 - ft_strlen(msg) / 2 - 1;
 	y = LINES / 2 - 1;
 	x1 = x - 1;
-	y1 = y;
 	len = ft_strlen(msg);
 	wattrset(stdscr, COLOR_PAIR(1));
 	while ((x1 - x) < len + 1)
