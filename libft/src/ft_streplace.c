@@ -45,11 +45,13 @@ void	ft_streplace(char **str, char *pattern, char *replace)
 		if (!ft_strncmp(pattern, *str + i, len))
 		{
 			if (i > 0)
+			{
 				first = ft_strsub(*str, 0, i);
-			end = ft_strsub(*str, i + len, ft_strlen(*str + i + len));
-			free(*str);
-			*str = ft_join_three(first, replace, end);
-			i += len;
+				end = ft_strsub(*str, i + len, ft_strlen(*str + i + len));
+				free(*str);
+				*str = ft_join_three(first, replace, end);
+				i += len;
+			}
 		}
 		else
 			++i;
